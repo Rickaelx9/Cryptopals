@@ -1,1 +1,1 @@
-gcc src/main.c -Iinclude
+gcc src/*.c -Iinclude
