@@ -8,7 +8,7 @@ int stringToHex(const char * str, uint8_t * hex)
     for(int i = 0; i < strlen(str); i+=2)
     {
         sscanf(&str[i], "%2X", (unsigned int *)&hex[j]);
-        printf("%X ", hex[j]);
+        printf("%02X ", hex[j]);
         ++j;
     } 
     printf("\r\n");
