@@ -121,3 +121,13 @@ hex : 5    B
 bin : 0101 1011    
 hex : 3    7
 bin : 0011 0111
+
+
+
+Set 1 Challenge 4:
+
+setps : 
+
+1) Extract from file every 60 characters
+2) For each 60 characters XOR it with every ascii character
+3) Print every possiblity and search a readable one
