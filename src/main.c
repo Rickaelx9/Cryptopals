@@ -31,9 +31,25 @@ int print_high_score(uint8_t * res, int hexlen, int score, int num_msg, char cur
 	return cpt > score;
 }
 
-//void encrypte(char * str, char * key, uint8_t * res)
-//{
-//}
+int hamming_distance(char * str1, char * str2)
+{
+	int cpt = 0;
+	uint8_t temp1 = 0;
+	uint8_t temp2 = 0;
+
+	for(int j = 0; j < strlen(str1); ++j)
+	{
+		for(int i = 0; i < 8; ++i)
+		{
+			temp1 = (str1[j] >> i) | 0xFE;
+			temp2 = (str2[j] >> i) | 0xFE;
+			//printf("%x vs %x\n", temp1, temp2);
+			if(temp1 != temp2) ++cpt;
+		}
+	}
+	printf("cpt = %d\n", cpt);
+	return cpt;
+}
 
 int main()
 {
@@ -118,26 +134,58 @@ int main()
 	
 	// Set 1 challenge 5
 	
-	FILE *fptr;
-	char ch;
-	char str[256];
-	int cpt = 0;
+	//FILE *fptr;
+	//char ch;
+	//char str[256];
+	//int cpt = 0;
+	//uint8_t res[256];
+
+	//fptr = fopen("setence.txt", "r");
+	//
+	//while( (ch = getc(fptr)) != EOF)	
+	//{
+	//	str[cpt] = ch;	
+	//	//printf("%c", str[cpt]);
+	//	++cpt;
+	//}
+	//str[cpt-1] = '\0';
+
+	//XOR_long_key(str, "ICE", res);
+	//
+	//fclose(fptr);
+	
+	// Set 1 challenge 5
+	
+	uint8_t hex1[256];
+	uint8_t hex2[256];
 	uint8_t res[256];
+	int hexlen = 0;
+	char str1[] = "this is a test";
+	char str2[] = "wokka wokka!!!";
 
-	fptr = fopen("setence.txt", "r");
-	
-	while( (ch = getc(fptr)) != EOF)	
+	for(int i = 0; i < strlen(str1); ++i)
 	{
-		str[cpt] = ch;	
-		//printf("%c", str[cpt]);
-		++cpt;
+		printf("%c", str1[i]);
 	}
-	str[cpt-1] = '\0';
-
-	XOR_long_key(str, "ICE", res);
+	printf("\n");
+	for(int i = 0; i < strlen(str1); ++i)
+	{
+		printf("%02x ", str1[i]);
+	}
+	printf("\n");
 	
-	fclose(fptr);
+	for(int i = 0; i < strlen(str2); ++i)
+	{
+		printf("%c", str2[i]);
+	}
+	printf("\n");
+	for(int i = 0; i < strlen(str2); ++i)
+	{
+		printf("%02x ", str2[i]);
+	}
+	printf("\n");
+
+	hamming_distance(str1, str2);
 
     return 0; 	
 }
-
