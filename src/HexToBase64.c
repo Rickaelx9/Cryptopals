@@ -11,8 +11,15 @@ int stringToHex(const char * str, uint8_t * hex)
         printf("%02X ", hex[j]);
         ++j;
     } 
+	
     printf("\r\n");
+	for(int i = 0; i < j; ++i)
+	{
+        printf("%c ", hex[i]);
+	}
     //printf("\r\nj = %d\r\n", j);
+    printf("\r\n");
+    printf("\r\n");
     return j;
 }
 
